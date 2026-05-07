@@ -1,0 +1,35 @@
+# River City Events Portal — Apache security rules
+# Protects log files, dev docs, and sensitive internal paths from public access.
+
+# Block all .log files in the webroot
+<FilesMatch "\.log$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block all .md documentation files (dev-only)
+<FilesMatch "\.(md|markdown)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block hidden files and directories (.git, .env, .gitignore, etc.)
+<FilesMatch "^\.">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Block the claude worktree directory
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^\.claude/ - [F,L]
+    RewriteRule ^\.playwright-mcp/ - [F,L]
+</IfModule>
+
+# Disable directory listing
+Options -Indexes
+
+# Block PHP execution in data/ directory (events data is served as static files only)
+<IfModule mod_rewrite.c>
+    RewriteRule ^data/.*\.php$ - [F,L]
+</IfModule>

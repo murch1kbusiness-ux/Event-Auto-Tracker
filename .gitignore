@@ -1,0 +1,43 @@
+# Secrets — never commit these
+.env
+credentials.json
+private/*.json
+
+# Logs
+*.log
+logs/*.log
+river-city-events-portal/*.log
+river-city-events-portal/data/scan_errors.log
+
+# Portal data (generated at runtime — not committed)
+river-city-events-portal/data/events.json
+river-city-events-portal/data/events.csv
+river-city-events-portal/data/scan_meta.json
+
+# Portal private config (copy config.example.php → config.php and fill in your values)
+river-city-events-portal/includes/config.php
+
+# Output CSV (generated at runtime)
+output/events.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+.venv/
+env/
+.env/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

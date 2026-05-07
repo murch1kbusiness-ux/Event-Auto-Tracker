@@ -1,0 +1,22 @@
+# Secrets — never commit these
+includes/config.php
+.env
+credentials.json
+
+# Logs
+*.log
+logs/
+
+# PHP / Composer
+vendor/
+composer.lock
+
+# Node (not used, but just in case)
+node_modules/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
